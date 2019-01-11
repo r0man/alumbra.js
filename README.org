@@ -15,50 +15,118 @@
    :CUSTOM_ID: usage
    :END:
 
-   #+BEGIN_SRC clojure
-    (require '[alumbra.js.ast :as ast])
-    (require '[alumbra.parser :as parser])
-    (require '[clojure.pprint :refer [pprint]])
+   Parse a GraphQL document.
 
-    (def my-document
-      (parser/parse-document "{ human(id: \"1000\") { name height(unit: FOOT) } }"))
+   #+BEGIN_SRC clojure :exports code :results silent
+     (require '[alumbra.js.ast :as ast])
+     (require '[alumbra.parser :as parser])
+     (require '[clojure.pprint :refer [pprint]])
 
-    ;; Convert an Alumbra GraphQL document AST to JavaScript.
+     (def my-document
+       (parser/parse-document "{ human(id: \"1000\") { name height(unit: FOOT) } }"))
+   #+END_SRC
 
+   Convert the Alumbra GraphQL document AST into a JavaScript AST.
+
+   #+BEGIN_SRC clojure :exports both :results output
     (def my-js-ast
       (ast/alumbra->js my-document))
 
     (pprint my-js-ast)
+   #+END_SRC
 
-    ;; {:definitions
-    ;;  [{:directives [],
-    ;;    :kind "OperationDefinition",
-    ;;    :loc {:startToken {:column 0, :line 0, :start 0}},
-    ;;    :name nil,
-    ;;    :operation "query",
-    ;;    :selectionSet
-    ;;    {:kind "SelectionSet",
-    ;;     :selections
-    ;;     [{:alias nil,
-    ;;       :arguments ...
+   #+RESULTS:
+   #+begin_example
+   {:definitions
+    [{:directives [],
+      :kind "OperationDefinition",
+      :loc {:startToken {:column 0, :line 0, :start 0}},
+      :name nil,
+      :operation "query",
+      :selectionSet
+      {:kind "SelectionSet",
+       :selections
+       [{:alias nil,
+         :arguments
+         [{:kind "Argument",
+           :loc {:startToken {:column 8, :line 0, :start 8}},
+           :name
+           {:kind "Name",
+            :loc {:startToken {:column 8, :line 0, :start 8}},
+            :value "id"},
+           :value
+           {:block false,
+            :kind "StringValue",
+            :loc {:startToken {:column 12, :line 0, :start 12}},
+            :value "1000"}}],
+         :directives [],
+         :kind "Field",
+         :loc {:startToken {:column 2, :line 0, :start 2}},
+         :name
+         {:kind "Name",
+          :loc {:startToken {:column 2, :line 0, :start 2}},
+          :value "human"},
+         :selectionSet
+         {:kind "SelectionSet",
+          :selections
+          [{:alias nil,
+            :arguments [],
+            :directives [],
+            :kind "Field",
+            :loc {:startToken {:column:value "FOOT"}}],
+            :directives [],
+            :kind "Field",
+            :loc {:startToken {:column 27, :line 0, :start 27}},
+            :name
+            {:kind "Name",
+             :loc {:startToken {:column 27, :line 0, :start 27}},
+             :value "height"},
+            :selectionSet nil}]}}]},
+      :variableDefinitions []}],
+    :kind "Document",
+    :loc {:startToken {:column 0, :line 0, :start 0}}}
+   #+end_example
 
-    ;; Convert a JavaScript GraphQL document AST ton Alumbra.
 
+   Convert the JavaScript GraphQL document AST back to an Alumbra AST.
+
+   #+BEGIN_SRC clojure :exports both :results output
     (def my-alumbra-ast
       (ast/js->alumbra my-js-ast))
 
     (binding [*print-namespace-maps* false]
       (pprint my-alumbra-ast))
-
-    ;; {:alumbra/metadata {:column 0, :index 0, :row 0},
-    ;;  :alumbra/operations
-    ;;  [{:alumbra/metadata {:column 0, :index 0, :row 0},
-    ;;    :alumbra/operation-type "query",
-    ;;    :alumbra/selection-set
-    ;;    [{:alumbra/field-name "human",
-    ;;      :alumbra/metadata {:column 2, :index 2, :row 0},
-    ;;      :alumbra/arguments ...
    #+END_SRC
+
+   #+RESULTS:
+   #+begin_example
+   {:alumbra/metadata {:column 0, :index 0, :row 0},
+    :alumbra/operations
+    [{:alumbra/metadata {:column 0, :index 0, :row 0},
+      :alumbra/operation-type "query",
+      :alumbra/selection-set
+      [{:alumbra/field-name "human",
+        :alumbra/metadata {:column 2, :index 2, :row 0},
+        :alumbra/arguments
+        [{:alumbra/argument-name "id",
+          :alumbra/argument-value
+          {:alumbra/metadata {:column 12, :index 12, :row 0},
+           :alumbra/value-type :string,
+           :alumbra/string "1000"},
+          :alumbra/metadata {:column 8, :index 8, :row 0}}],
+        :alumbra/selection-set
+        [{:alumbra/field-name "name",
+          :alumbra/metadata {:column 22, :index 22, :row 0}}
+         {:alumbra/field-name "height",
+          :alumbra/metadata {:column 27, :index 27, :row 0},
+          :alumbra/arguments
+          [{:alumbra/argument-name "unit",
+            :alumbra/argument-value
+            {:alumbra/value-type :enum,
+             :alumbra/enum "FOOT",
+             :alumbra/metadata {:column 40, :index 40, :row 0}},
+            :alumbra/metadata {:column 34, :index 34, :row 0}}]}]}]}]}
+   #+end_example
 
 ** License
    :PROPERTIES:
