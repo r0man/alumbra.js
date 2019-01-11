@@ -5,6 +5,7 @@
             :url "https://opensource.org/licenses/MIT"
             :year 2018
             :key "mit"}
+  :deploy-repositories [["releases" :clojars]]
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [r0man/alumbra.printer "0.1.0"]]
   :plugins [[jonase/eastwood "0.3.4"]
