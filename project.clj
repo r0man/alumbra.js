@@ -1,4 +1,4 @@
-(defproject r0man/alumbra.js "0.1.0"
+(defproject r0man/alumbra.js "0.1.1-SNAPSHOT"
   :description "Transformations between Alumbra and JavaScript GraphQL ASTs."
   :url "https://github.com/r0man/alumbra.js"
   :license {:name "MIT License"
