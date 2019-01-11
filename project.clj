@@ -6,7 +6,7 @@
             :year 2018
             :key "mit"}
   :dependencies [[org.clojure/clojure "1.10.0"]
-                 [r0man/alumbra.printer "0.1.0-SNAPSHOT"]]
+                 [r0man/alumbra.printer "0.1.0"]]
   :plugins [[jonase/eastwood "0.3.4"]
             [lein-cljsbuild "1.1.7"]
             [lein-doo "0.1.11"]]
@@ -37,10 +37,9 @@
    {:dependencies [[alumbra/analyzer "0.1.17"]
                    [alumbra/generators "0.2.2"]
                    [alumbra/parser "0.1.7"]
-                   [alumbra/spec "0.1.12-SNAPSHOT"]
                    [com.gfredericks/test.chuck "0.2.9"]
                    [criterium "0.4.4"]
-                   [expound "0.7.2"]
+                   [r0man/alumbra.spec "0.1.11"]
                    [org.clojure/test.check "0.9.0"]]}
    :provided
    {:dependencies [[org.clojure/clojurescript "1.10.439"]]}
