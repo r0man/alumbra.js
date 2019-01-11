@@ -38,9 +38,8 @@
                    [alumbra/generators "0.2.2"]
                    [alumbra/parser "0.1.7"]
                    [com.gfredericks/test.chuck "0.2.9"]
-                   [criterium "0.4.4"]
-                   [r0man/alumbra.spec "0.1.11"]
-                   [org.clojure/test.check "0.9.0"]]}
+                   [org.clojure/test.check "0.9.0"]
+                   [r0man/alumbra.spec "0.1.11"]]}
    :provided
    {:dependencies [[org.clojure/clojurescript "1.10.439"]]}
    :repl
