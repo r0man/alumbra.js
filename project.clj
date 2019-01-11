@@ -6,8 +6,7 @@
             :year 2018
             :key "mit"}
   :deploy-repositories [["releases" :clojars]]
-  :dependencies [[org.clojure/clojure "1.10.0"]
-                 [r0man/alumbra.printer "0.1.0"]]
+  :dependencies [[org.clojure/clojure "1.10.0"]]
   :plugins [[jonase/eastwood "0.3.4"]
             [lein-cljsbuild "1.1.7"]
             [lein-doo "0.1.11"]]
