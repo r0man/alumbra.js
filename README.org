@@ -5,8 +5,8 @@
 
   [[https://clojars.org/r0man/alumbra.js][https://img.shields.io/clojars/v/r0man/alumbra.js.svg]]
   [[https://travis-ci.org/r0man/alumbra.js][https://travis-ci.org/r0man/alumbra.js.svg]]
-  [[http://jarkeeper.com/r0man/alumbra.js][http://jarkeeper.com/r0man/alumbra.js/status.svg]]
-  [[http://jarkeeper.com/r0man/alumbra.js][https://jarkeeper.com/r0man/alumbra.js/downloads.svg]]
+  [[https://versions.deps.co/r0man/alumbra.js][https://versions.deps.co/r0man/alumbra.js/status.svg]]
+  [[https://versions.deps.co/r0man/alumbra.js][https://jarkeeper.com/r0man/alumbra.js/downloads.svg]]
 
   Transformation functions between [[https://github.com/alumbra][Alumbra]] and JavaScript [[https://graphql.org/][GraphQL]] ASTs.
 
