@@ -38,243 +38,243 @@
      }
    }")
 
-;; (defexample arguments-selection-set
-;;   "{
-;;      human(id: \"1000\") {
-;;        name
-;;        height
-;;      }
-;;    }")
+(defexample arguments-selection-set
+  "{
+     human(id: \"1000\") {
+       name
+       height
+     }
+   }")
 
-;; (defexample arguments-type
-;;   "type Starship {
-;;      id: ID!
-;;      name: String!
-;;      length(unit: LengthUnit = METER): Float
-;;    }")
+(defexample arguments-type
+  "type Starship {
+     id: ID!
+     name: String!
+     length(unit: LengthUnit = METER): Float
+   }")
 
-;; ;; Default variables
+;; Default variables
 
-;; (defexample default-variables
-;;   "query HeroNameAndFriends($episode: Episode = JEDI) {
-;;      hero(episode: $episode) {
-;;        name
-;;        friends {
-;;          name
-;;        }
-;;      }
-;;    }")
+(defexample default-variables
+  "query HeroNameAndFriends($episode: Episode = JEDI) {
+     hero(episode: $episode) {
+       name
+       friends {
+         name
+       }
+     }
+   }")
 
-;; ;; Directives
+;; Directives
 
-;; (defexample directives
-;;   "query Hero($episode: Episode, $withFriends: Boolean!) {
-;;      hero(episode: $episode) {
-;;        name
-;;        friends @include(if: $withFriends) {
-;;          name
-;;        }
-;;      }
-;;    }")
+(defexample directives
+  "query Hero($episode: Episode, $withFriends: Boolean!) {
+     hero(episode: $episode) {
+       name
+       friends @include(if: $withFriends) {
+         name
+       }
+     }
+   }")
 
-;; (defexample directives-flat
-;;   "{
-;;      human {
-;;        name @client
-;;        height @client
-;;      }
-;;    }")
+(defexample directives-flat
+  "{
+     human {
+       name @client
+       height @client
+     }
+   }")
 
-;; ;; Enums
+;; Enums
 
-;; (defexample enums
-;;   "enum Direction {
-;;      NORTH
-;;      EAST
-;;      SOUTH
-;;      WEST
-;;    }")
+(defexample enums
+  "enum Direction {
+     NORTH
+     EAST
+     SOUTH
+     WEST
+   }")
 
-;; (defexample enum-extension
-;;   "extend enum Direction {
-;;      NORTH_EAST
-;;    }")
+(defexample enum-extension
+  "extend enum Direction {
+     NORTH_EAST
+   }")
 
-;; ;; Fields
+;; Fields
 
-;; (defexample field-simple
-;;   "{
-;;      hero {
-;;        name
-;;      }
-;;    }")
+(defexample field-simple
+  "{
+     hero {
+       name
+     }
+   }")
 
-;; (defexample field-object
-;;   "{
-;;      hero {
-;;        name
-;;        # Queries can have comments!
-;;        friends {
-;;          name
-;;        }
-;;      }
-;;    }")
+(defexample field-object
+  "{
+     hero {
+       name
+       # Queries can have comments!
+       friends {
+         name
+       }
+     }
+   }")
 
-;; (defexample hero-name-and-friends
-;;   "query HeroNameAndFriends {
-;;      hero {
-;;        name
-;;        friends {
-;;          name
-;;        }
-;;      }
-;;    }")
+(defexample hero-name-and-friends
+  "query HeroNameAndFriends {
+     hero {
+       name
+       friends {
+         name
+       }
+     }
+   }")
 
-;; ;; Fragments
+;; Fragments
 
-;; (defexample fragments
-;;   "{
-;;      leftComparison: hero(episode: EMPIRE) {
-;;        ...comparisonFields
-;;      }
-;;      rightComparison: hero(episode: JEDI) {
-;;        ...comparisonFields
-;;      }
-;;    }
+(defexample fragments
+  "{
+     leftComparison: hero(episode: EMPIRE) {
+       ...comparisonFields
+     }
+     rightComparison: hero(episode: JEDI) {
+       ...comparisonFields
+     }
+   }
 
-;;    fragment comparisonFields on Character {
-;;      name
-;;      appearsIn
-;;      friends {
-;;        name
-;;      }
-;;    }")
+   fragment comparisonFields on Character {
+     name
+     appearsIn
+     friends {
+       name
+     }
+   }")
 
-;; (defexample fragments-variables
-;;   "query HeroComparison($first: Int = 3) {
-;;      leftComparison: hero(episode: EMPIRE) {
-;;        ...comparisonFields
-;;      }
-;;      rightComparison: hero(episode: JEDI) {
-;;        ...comparisonFields
-;;      }
-;;    }
+(defexample fragments-variables
+  "query HeroComparison($first: Int = 3) {
+     leftComparison: hero(episode: EMPIRE) {
+       ...comparisonFields
+     }
+     rightComparison: hero(episode: JEDI) {
+       ...comparisonFields
+     }
+   }
 
-;;    fragment comparisonFields on Character {
-;;      name
-;;      friendsConnection(first: $first) {
-;;        totalCount
-;;        edges {
-;;          node {
-;;            name
-;;          }
-;;        }
-;;      }
-;;    }")
+   fragment comparisonFields on Character {
+     name
+     friendsConnection(first: $first) {
+       totalCount
+       edges {
+         node {
+           name
+         }
+       }
+     }
+   }")
 
-;; ;; Interface Type
+;; Interface Type
 
-;; (defexample interface-definition
-;;   "interface NamedEntity {
-;;      name: String
-;;    }")
+(defexample interface-definition
+  "interface NamedEntity {
+     name: String
+   }")
 
-;; (defexample interface-implements
-;;   "type Person implements NamedEntity {
-;;      name: String
-;;      age: Int
-;;    }")
+(defexample interface-implements
+  "type Person implements NamedEntity {
+     name: String
+     age: Int
+   }")
 
-;; ;; Interface Type Extension
+;; Interface Type Extension
 
-;; (defexample interface-type-extension
-;;   "extend interface NamedEntity {
-;;      nickname: String
-;;    }")
+(defexample interface-type-extension
+  "extend interface NamedEntity {
+     nickname: String
+   }")
 
-;; ;; Inline Fragments
+;; Inline Fragments
 
-;; (defexample inline-fragments
-;;   "query HeroForEpisode($ep: Episode!) {
-;;      hero(episode: $ep) {
-;;        name
-;;        ... on Droid {
-;;          primaryFunction
-;;        }
-;;        ... on Human {
-;;          height
-;;        }
-;;      }
-;;    }")
+(defexample inline-fragments
+  "query HeroForEpisode($ep: Episode!) {
+     hero(episode: $ep) {
+       name
+       ... on Droid {
+         primaryFunction
+       }
+       ... on Human {
+         height
+       }
+     }
+   }")
 
-;; ;; Input Values
+;; Input Values
 
-;; (defexample input-values
-;;   "{
-;;      int_value(input: 1)
-;;      float_value(input: 1.2)
-;;      boolean_value(input: true)
-;;      string_value(input: \"x\")
-;;      null_value(input: null)
-;;      enum_value(input: ENUM_X)
-;;      list_value(input: [1, 2, 3])
-;;      object_value(input: {a: 1, b: 2})
-;;      object_nested_value(input: {a: 1, b: {c: 2} })
-;;    }")
+(defexample input-values
+  "{
+     int_value(input: 1)
+     float_value(input: 1.2)
+     boolean_value(input: true)
+     string_value(input: \"x\")
+     null_value(input: null)
+     enum_value(input: ENUM_X)
+     list_value(input: [1, 2, 3])
+     object_value(input: {a: 1, b: 2})
+     object_nested_value(input: {a: 1, b: {c: 2} })
+   }")
 
-;; ;; Input Objects
+;; Input Objects
 
-;; (defexample input-object-type-definition
-;;   "input Point2D {
-;;      x: Float
-;;      y: Float
-;;    }")
+(defexample input-object-type-definition
+  "input Point2D {
+     x: Float
+     y: Float
+   }")
 
-;; (defexample input-object-type-extension
-;;   "extend input NamedEntity {
-;;      nickname: String
-;;    }")
+(defexample input-object-type-extension
+  "extend input NamedEntity {
+     nickname: String
+   }")
 
-;; ;; Meta Fields
+;; Meta Fields
 
-;; (defexample meta-fields
-;;   "{
-;;      search(text: \"an\") {
-;;        __typename
-;;        ... on Human {
-;;          name
-;;        }
-;;        ... on Droid {
-;;          name
-;;        }
-;;        ... on Starship {
-;;          name
-;;        }
-;;      }
-;;    }")
+(defexample meta-fields
+  "{
+     search(text: \"an\") {
+       __typename
+       ... on Human {
+         name
+       }
+       ... on Droid {
+         name
+       }
+       ... on Starship {
+         name
+       }
+     }
+   }")
 
-;; ;; Mutations
+;; Mutations
 
-;; (defexample mutation
-;;   "mutation CreateReviewForEpisode($ep: Episode!, $review: ReviewInput!) {
-;;      createReview(episode: $ep, review: $review) {
-;;        stars
-;;        commentary
-;;      }
-;;    }")
+(defexample mutation
+  "mutation CreateReviewForEpisode($ep: Episode!, $review: ReviewInput!) {
+     createReview(episode: $ep, review: $review) {
+       stars
+       commentary
+     }
+   }")
 
-;; ;; Object Type Extension
+;; Object Type Extension
 
-;; (defexample object-type-definition
-;;   "type Person implements NamedEntity {
-;;      name: String
-;;      age: Int
-;;    }")
+(defexample object-type-definition
+  "type Person implements NamedEntity {
+     name: String
+     age: Int
+   }")
 
-;; (defexample object-type-extension
-;;   "extend type Story {
-;;      isHiddenLocally: Boolean
-;;    }")
+(defexample object-type-extension
+  "extend type Story {
+     isHiddenLocally: Boolean
+   }")
 
 ;; ;; Operation name
 
